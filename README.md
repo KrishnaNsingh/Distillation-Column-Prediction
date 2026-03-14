@@ -2,7 +2,7 @@
 
 A real-time machine learning application for predicting ethanol purity in distillation columns. Built with Streamlit and trained on 1,200+ experimental datasets.
 
-**Author:** Narendra Kumar
+**Author:** Krishna Narayan Singh
 
 ---
 
@@ -179,15 +179,6 @@ This project is open source and available under the MIT License.
 
 ---
 
-## 👤 Author
-
-**Narendra Kumar**
-- Chemical R&D Scientist
-- Expertise: AI/ML in the Chemical Industry, Process Optimization
-- Location: Maharashtra, India
-
----
-
 ## 🤝 Contributing
 
 Found a bug or have suggestions? Feel free to:
@@ -200,12 +191,12 @@ Found a bug or have suggestions? Feel free to:
 ## 📞 Contact
 
 For questions or collaboration:
-- 📧 Email: narendrakmr8267@gmail.com
-- 💼 LinkedIn: [www.linkedin.com/in/narendra-kumar8267](url)
-- 🐙 GitHub: [https://github.com/ShekharS007](url)
+- 📧 Email: krishnanarayansingh65@gmail.com
+- 💼 LinkedIn: [www.linkedin.com/in/krishnansingh](url)
+- 🐙 GitHub: [https://github.com/KrishnaNsingh](url)
 
 ---
 
-**Last Updated:** January 28, 2026  
+**Last Updated:** March 16, 2026
 **App Version:** 1.0  
 **Status:** Production Ready ✅
