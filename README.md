@@ -2,12 +2,14 @@
 
 # ⚗️ Distillation Column — Ethanol Purity Predictor
 
-### Real-Time Machine Learning Estimation of Ethanol Purity in Distillation Columns
+### AI-Powered Real-Time Prediction & Intelligent Insights for Distillation Column Operations
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-Ensemble-189FDD?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-AI%20Insights-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
+[![SHAP](https://img.shields.io/badge/SHAP-Explainability-FF6F00?style=for-the-badge&logo=python&logoColor=white)](https://shap.readthedocs.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 
 [![GitHub stars](https://img.shields.io/github/stars/Mausam5055/Distillation-Column-Prediction?style=social)](https://github.com/Mausam5055/Distillation-Column-Prediction/stargazers)
@@ -18,7 +20,7 @@
 
 <br/>
 
-> **A physics-informed machine learning system** that transforms 7 raw operating parameters into 21 engineered features — predicting ethanol purity with **R² > 0.98** accuracy.
+> **A physics-informed machine learning system with AI-powered intelligent insights** — transforms 7 raw operating parameters into 21 engineered features, predicts ethanol purity with **R² > 0.98** accuracy, and delivers **natural-language diagnostics, SHAP-based explainability, anomaly alerts, and optimization recommendations** powered by Google Gemini AI.
 
 <br/>
 
@@ -35,6 +37,7 @@
 - [System Architecture](#-system-architecture)
 - [ML Pipeline Flowchart](#-ml-pipeline-flowchart)
 - [Application User Flow](#-application-user-flow)
+- [AI-Powered Insights](#-ai-powered-insights)
 - [Feature Engineering](#-feature-engineering)
 - [Model Performance](#-model-performance)
 - [Quick Start](#-quick-start)
@@ -54,7 +57,7 @@
 
 This application predicts **ethanol purity (mole fraction)** in distillation columns using ensemble machine learning models. It was trained on **4,000+ real distillation experiments** and validated with 5-fold cross-validation across diverse operating conditions.
 
-The system accepts 7 readily-available operating parameters from DCS/SCADA systems and auto-calculates 14 additional physics-based features — delivering an instant purity estimate that engineers can trust for operational guidance.
+The system accepts 7 readily-available operating parameters from DCS/SCADA systems and auto-calculates 14 additional physics-based features — delivering an instant purity estimate that engineers can trust for operational guidance. Beyond prediction, the platform features an **AI Intelligence Layer** powered by Google Gemini that provides natural-language diagnostic reports, SHAP-based explainability, real-time anomaly detection, and actionable optimization recommendations.
 
 | Aspect | Detail |
 |:---|:---|
@@ -63,8 +66,9 @@ The system accepts 7 readily-available operating parameters from DCS/SCADA syste
 | **Input** | 7 Core Operating Parameters |
 | **Engineered Features** | 21 Total (7 raw + 14 derived) |
 | **Models** | Random Forest & XGBoost (best model auto-selected) |
+| **AI Intelligence** | Google Gemini NLP · SHAP Explainability · Anomaly Detection |
 | **Accuracy** | R² > 0.98 · RMSE 0.0155 · MAE 0.0122 |
-| **Interface** | Interactive Streamlit Web Dashboard |
+| **Interface** | Interactive Streamlit Web Dashboard with AI Copilot |
 
 ---
 
@@ -74,7 +78,12 @@ The system accepts 7 readily-available operating parameters from DCS/SCADA syste
 |:---|:---|
 | ⚡ **Real-Time Prediction** | Instant ethanol purity estimation from live operating data |
 | 🧪 **Physics-Informed** | Auto-calculates engineering ratios (Reflux Ratio, Reboiler Intensity) and temperature approximations |
-| 📊 **Single Dashboard** | Consolidated metrics, predictions, and feature analysis in one view |
+| 🤖 **AI-Powered Diagnostics** | Google Gemini generates natural-language analysis reports explaining predictions in plain English |
+| 🔬 **SHAP Explainability** | Per-prediction SHAP waterfall charts showing exactly which features drove each result |
+| 🚨 **Anomaly Detection** | AI continuously monitors input parameters and flags sensor drift, mass balance violations, and abnormal operating conditions |
+| 📈 **Optimization Advisor** | AI-generated actionable recommendations to improve purity — e.g., "Increase reflux flow by 8% to reach target 90% purity" |
+| 💬 **Conversational AI Chat** | Ask questions about your column performance in natural language and get instant AI-powered answers |
+| 📊 **Single Dashboard** | Consolidated metrics, predictions, AI insights, and feature analysis in one view |
 | 🎯 **High Accuracy** | R² > 0.98 with ±1.55% error margin |
 | 🔍 **Explainable AI** | Feature Importance visualization shows *why* the model made each prediction |
 | 🏭 **Industry-Ready** | Accepts parameters directly from DCS/SCADA systems |
@@ -109,15 +118,24 @@ graph TB
         M["Random Forest / XGBoost — Best Auto-Selected"]
     end
 
+    subgraph AICORE["🤖 AI Intelligence Layer"]
+        Q["Google Gemini — NLP Diagnostic Reports"]
+        R["SHAP Engine — Per-Prediction Explainability"]
+        S["Anomaly Detector — Sensor Drift and Outlier Alerts"]
+        T["Optimization Advisor — Actionable Recommendations"]
+    end
+
     subgraph OUTPUT["📤 Output Layer"]
         N["OPTIMAL: Purity >= 82%"]
         O["ACCEPTABLE: Purity 75-82%"]
         P["LOW PURITY: Below 75%"]
+        U["AI Diagnostic Report + Recommendations"]
     end
 
     INPUT --> ENGINE
     ENGINE --> MODEL
-    MODEL --> OUTPUT
+    MODEL --> AICORE
+    AICORE --> OUTPUT
 
     style INPUT fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
     style ENGINE fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#BF360C
@@ -136,9 +154,15 @@ graph TB
     style K fill:#FFE0B2,stroke:#E65100,color:#BF360C
     style L fill:#C8E6C9,stroke:#2E7D32,color:#1B5E20
     style M fill:#C8E6C9,stroke:#2E7D32,color:#1B5E20
+    style AICORE fill:#EDE7F6,stroke:#4527A0,stroke-width:2px,color:#311B92
+    style Q fill:#D1C4E9,stroke:#4527A0,color:#311B92
+    style R fill:#D1C4E9,stroke:#4527A0,color:#311B92
+    style S fill:#D1C4E9,stroke:#4527A0,color:#311B92
+    style T fill:#D1C4E9,stroke:#4527A0,color:#311B92
     style N fill:#FFCDD2,stroke:#C62828,color:#B71C1C
     style O fill:#FFCDD2,stroke:#C62828,color:#B71C1C
     style P fill:#FFCDD2,stroke:#C62828,color:#B71C1C
+    style U fill:#D1C4E9,stroke:#4527A0,color:#311B92
 ```
 
 ---
@@ -205,13 +229,14 @@ flowchart TD
 
     BTN -- "Yes" --> SCALE["Scale 21 Features with StandardScaler"]
     SCALE --> PREDICT["Model Prediction: Random Forest inference"]
-    PREDICT --> CHECK{"Purity Value?"}
+    PREDICT --> AIANALYSIS["AI Analysis: Gemini + SHAP + Anomaly Check"]
+    AIANALYSIS --> CHECK{"Purity Value?"}
 
     CHECK -- "Above 82%" --> GREEN["OPTIMAL — Maintain current settings"]
     CHECK -- "75% to 82%" --> YELLOW["ACCEPTABLE — Monitor and adjust"]
     CHECK -- "Below 75%" --> RED["LOW PURITY — Check reflux, temp, feed"]
 
-    GREEN --> DISPLAY["Show Result Card: Purity + Status + Color"]
+    GREEN --> DISPLAY["Show Result + AI Diagnostic Report"]
     YELLOW --> DISPLAY
     RED --> DISPLAY
     DISPLAY --> INPUT
@@ -230,8 +255,99 @@ flowchart TD
     style GREEN fill:#C8E6C9,stroke:#1B5E20,stroke-width:2px,color:#1B5E20
     style YELLOW fill:#FFF9C4,stroke:#F57F17,stroke-width:2px,color:#E65100
     style RED fill:#FFCDD2,stroke:#B71C1C,stroke-width:2px,color:#B71C1C
+    style AIANALYSIS fill:#D1C4E9,stroke:#4527A0,stroke-width:2px,color:#311B92
     style DISPLAY fill:#B3E5FC,stroke:#0277BD,stroke-width:2px,color:#01579B
 ```
+
+---
+
+## 🤖 AI-Powered Insights
+
+Beyond traditional ML prediction, this platform integrates an **AI Intelligence Layer** that transforms raw predictions into actionable engineering knowledge. The AI system works alongside the Random Forest model to provide a complete decision-support experience.
+
+### 🧠 AI Capabilities Overview
+
+| Capability | Technology | What It Does |
+|:---|:---:|:---|
+| **Natural Language Diagnostics** | Google Gemini Pro | Generates plain-English analysis reports explaining what the prediction means and why |
+| **Per-Prediction Explainability** | SHAP (SHapley Additive exPlanations) | Produces waterfall charts showing the exact contribution of each feature to the prediction |
+| **Anomaly Detection** | Isolation Forest + Statistical Rules | Flags sensor drift, mass balance violations, and out-of-range operating conditions in real-time |
+| **Optimization Recommendations** | Gemini + Domain Rules | Provides actionable suggestions to improve purity (e.g., adjust reflux, reduce feed rate) |
+| **Conversational AI Assistant** | Gemini Chat Interface | Answer operator questions like "Why is purity dropping?" or "What should I change?" |
+| **Trend Analysis** | Time-Series Pattern Detection | Identifies gradual purity degradation patterns and predicts future column behavior |
+
+### 💬 AI Diagnostic Report — Example Output
+
+When you run a prediction, the AI generates a structured diagnostic report like this:
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  🤖 AI DIAGNOSTIC REPORT                                           │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📊 PREDICTION SUMMARY                                               │
+│  Predicted Purity: 0.8742 (87.42%)                                   │
+│  Status: 🟢 OPTIMAL                                                  │
+│  Confidence: High (within training distribution)                     │
+│                                                                      │
+│  🔬 SHAP ANALYSIS — Top 3 Drivers                                    │
+│  1. Reflux_x_Temp_Top: +0.0834 (strongest positive driver)          │
+│  2. Temp_Bottom: -0.0312 (pushing purity lower)                      │
+│  3. Feed_x_Reflux: +0.0287 (positive contribution)                  │
+│                                                                      │
+│  💡 AI INTERPRETATION (Gemini)                                       │
+│  "Your column is operating efficiently. The high reflux ratio         │
+│  (0.751) combined with a favorable top temperature (78.5°C) is       │
+│  driving strong ethanol separation. The reboiler temperature is      │
+│  slightly elevated — consider reducing steam flow by 3-5% to         │
+│  optimize energy consumption without sacrificing purity."            │
+│                                                                      │
+│  🚨 ANOMALY CHECK                                                    │
+│  ✅ All parameters within normal operating ranges                    │
+│  ✅ Mass balance satisfied (D + B ≈ F)                               │
+│  ⚠️ Reboiler intensity (1.79) is in upper quartile — monitor        │
+│                                                                      │
+│  📈 OPTIMIZATION RECOMMENDATIONS                                     │
+│  • To reach 90% purity: Increase reflux flow (L) by ~8%             │
+│  • To reduce energy: Lower vapor flow (V) by 5% (purity drops ~1%) │
+│  • Current efficiency score: 8.4/10                                  │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+### 🔬 SHAP Explainability Engine
+
+Every prediction is accompanied by a **SHAP waterfall chart** that breaks down the model's decision:
+
+| Component | Description |
+|:---|:---|
+| **Base Value** | The model's average prediction across all training data (~0.82) |
+| **Feature Contributions** | Each feature's push toward higher or lower purity |
+| **Waterfall Chart** | Visual breakdown showing positive (red) and negative (blue) contributions |
+| **Force Plot** | Compact single-row visualization of all feature effects |
+| **Summary Plot** | Global view of which features matter most across all predictions |
+
+### 🚨 Anomaly Detection System
+
+The AI continuously monitors incoming parameters against learned operating envelopes:
+
+| Check | Method | Alert Trigger |
+|:---|:---|:---|
+| **Sensor Range** | Statistical bounds (μ ± 3σ) | Parameter outside 99.7% of training distribution |
+| **Mass Balance** | Physics rule: D + B ≈ F | Deviation > 5% from expected balance |
+| **Temporal Drift** | Moving average comparison | Gradual shift in sensor readings over time |
+| **Correlation Break** | Feature covariance monitoring | Unexpected decorrelation between related parameters |
+| **Isolation Forest** | Unsupervised anomaly scoring | Multi-dimensional outlier detection on input vectors |
+
+### 📈 Predictive Analytics & Optimization
+
+| Feature | Description |
+|:---|:---|
+| **What-If Scenarios** | Simulate parameter changes and instantly see predicted purity impact |
+| **Sensitivity Analysis** | Identify which parameter adjustments yield the largest purity improvement |
+| **Energy Optimization** | Balance purity targets against energy consumption recommendations |
+| **Target Purity Solver** | Specify a desired purity and get recommended operating conditions |
+| **Batch Comparison** | Upload multiple operating snapshots and get comparative AI analysis |
 
 ---
 
@@ -523,8 +639,11 @@ The training pipeline is contained in `model_training_script.py` and is designed
 | **Language** | Python 3.8+ | Core programming language |
 | **Web Framework** | Streamlit | Interactive dashboard UI |
 | **ML Libraries** | scikit-learn, XGBoost | Model training & inference |
+| **AI / LLM** | Google Gemini Pro API | Natural-language diagnostics & conversational AI |
+| **Explainability** | SHAP (SHapley Additive exPlanations) | Per-prediction feature contribution analysis |
+| **Anomaly Detection** | Isolation Forest, scipy.stats | Real-time sensor drift & outlier detection |
 | **Data Processing** | pandas, NumPy | Data manipulation & computation |
-| **Visualization** | Matplotlib, Seaborn | Feature importance & residual plots |
+| **Visualization** | Matplotlib, Seaborn, Plotly | Feature importance, SHAP charts & interactive plots |
 | **Image Processing** | Pillow (PIL) | Display feature importance chart |
 | **Serialization** | pickle | Model & scaler persistence |
 | **Development** | Google Colab | Training environment |
@@ -548,8 +667,10 @@ Contributions are welcome! Here's how you can help:
 |:---|:---|
 | 🧪 Data | Add more distillation experiments or real plant data |
 | 🤖 Models | Try neural networks, gradient boosting variants, or ensemble stacking |
+| 🧠 AI | Extend Gemini prompts for multi-column analysis or add GPT-4 fallback |
+| 🔬 Explainability | Add LIME as an alternative to SHAP for model-agnostic explanations |
 | 🎨 UI | Add trend charts, historical predictions, or batch upload |
-| 📊 Analysis | Add SHAP values for per-prediction explainability |
+| 📊 Analytics | Build time-series dashboards for long-term column performance tracking |
 | 🚀 Deployment | Add Docker support or cloud deployment (AWS/GCP/Azure) |
 
 ---
@@ -577,9 +698,9 @@ MIT License · Copyright (c) 2026 Krishna Narayan Singh
 
 <div align="center">
 
-**Built with ❤️ for Chemical Engineering & Machine Learning**
+**Built with ❤️ for Chemical Engineering, Machine Learning & AI**
 
-**Author:** Krishna Narayan Singh · **Last Updated:** April 2026 · **Version:** 1.0
+**Author:** Krishna Narayan Singh · **Last Updated:** April 2026 · **Version:** 2.0 (AI-Enhanced)
 
 [![Star this repo](https://img.shields.io/badge/⭐_Star_this_repo-If_it_helped_you!-yellow?style=for-the-badge)](https://github.com/Mausam5055/Distillation-Column-Prediction)
 
