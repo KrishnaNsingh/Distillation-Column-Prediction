@@ -129,32 +129,79 @@ graph TB
 ## 🔄 ML Pipeline Flowchart
 
 ```mermaid
-flowchart LR
-    A["📂 Raw Dataset\n4,000+ experiments"]
-    B["🧹 Data Cleaning\n• Remove duplicates\n• Remove outliers (1-99%)"]
-    C["⚙️ Feature Engineering\n• 21 total features\n• Physics-based ratios\n• Interaction terms"]
-    D["⚖️ Dataset Balancing\n• Undersample middle range\n• Preserve edge cases"]
-    E["✂️ Train/Val/Test Split\n60% / 20% / 20%"]
-    F["📏 StandardScaler\nFit on train only"]
-    G["🏋️ Model Training\n• XGBoost\n• Random Forest"]
-    H["🔁 5-Fold\nCross-Validation"]
-    I["🏆 Best Model\nSelection (R²)"]
-    J["💾 Export Artifacts\nmodel.pkl\nscaler.pkl\nfeatures_names.pkl"]
-    K["🚀 Streamlit App\nReal-time Prediction"]
+flowchart TD
+    subgraph PHASE1["📦 Phase 1 — Data Preparation"]
+        A["📂 Load Raw Dataset<br/>4,000+ experiments"] --> B["🧹 Clean Data<br/>Remove duplicates & nulls"]
+        B --> C["✂️ Remove Outliers<br/>Keep 1st–99th percentile"]
+        C --> D["⚙️ Engineer 21 Features<br/>Ratios, interactions, efficiency"]
+        D --> E["⚖️ Balance Dataset<br/>Undersample middle range to 40%"]
+    end
 
-    A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K
+    subgraph PHASE2["🧠 Phase 2 — Model Development"]
+        F["✂️ Split Data<br/>Train 60% · Val 20% · Test 20%"] --> G["📏 Scale Features<br/>StandardScaler on train only"]
+        G --> H["🏋️ Train Models<br/>XGBoost + Random Forest"]
+        H --> I["🔁 5-Fold Cross-Validation<br/>Evaluate on training set"]
+        I --> J["🏆 Select Best Model<br/>Compare test R² scores"]
+    end
 
-    style A fill:#E3F2FD,stroke:#1565C0,stroke-width:2px
-    style B fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-    style C fill:#FFF3E0,stroke:#E65100,stroke-width:2px
-    style D fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px
-    style E fill:#E0F7FA,stroke:#00838F,stroke-width:2px
-    style F fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
-    style G fill:#FFEBEE,stroke:#C62828,stroke-width:2px
-    style H fill:#FFF3E0,stroke:#E65100,stroke-width:2px
-    style I fill:#C8E6C9,stroke:#1B5E20,stroke-width:2px
-    style J fill:#E1F5FE,stroke:#0277BD,stroke-width:2px
-    style K fill:#FCE4EC,stroke:#AD1457,stroke-width:2px
+    subgraph PHASE3["🚀 Phase 3 — Deployment"]
+        K["💾 Export Artifacts<br/>model.pkl · scaler.pkl · features_names.pkl"] --> L["🖥️ Streamlit App<br/>Real-time prediction dashboard"]
+    end
+
+    PHASE1 --> PHASE2
+    PHASE2 --> PHASE3
+
+    style PHASE1 fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    style PHASE2 fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#BF360C
+    style PHASE3 fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+```
+
+---
+
+## 🧑‍💻 Application User Flow
+
+```mermaid
+flowchart TD
+    START(["🌐 User Opens App<br/>localhost:8501"]) --> LOAD{"🔍 Model Files<br/>Found?"}
+
+    LOAD -- "❌ No" --> ERR["🚨 Display Error<br/>Missing .pkl files"]
+    ERR --> STOP(["⛔ App Stops"])
+
+    LOAD -- "✅ Yes" --> INPUT["📥 Enter 7 Parameters<br/>P, T1, L, V, D, B, F"]
+    INPUT --> CALC["⚙️ Auto-Calculate<br/>14 Derived Features"]
+    CALC --> METRICS["📊 Display Live Metrics<br/>Reflux Ratio · Reboiler · Condenser"]
+    METRICS --> BTN{"🔮 User Clicks<br/>Run Simulation?"}
+
+    BTN -- "Not yet" --> INPUT
+
+    BTN -- "Yes" --> SCALE["📏 Scale 21 Features<br/>Using fitted StandardScaler"]
+    SCALE --> PREDICT["🧠 Model Prediction<br/>Random Forest inference"]
+    PREDICT --> CHECK{"📈 Purity Value?"}
+
+    CHECK -- "≥ 82%" --> GREEN["🟢 OPTIMAL<br/>Maintain current settings"]
+    CHECK -- "75%–82%" --> YELLOW["🟡 ACCEPTABLE<br/>Monitor & consider adjustments"]
+    CHECK -- "< 75%" --> RED["🔴 LOW PURITY<br/>Check reflux, temp & feed"]
+
+    GREEN --> DISPLAY["🖥️ Show Result Card<br/>Purity % + Status + Color"]
+    YELLOW --> DISPLAY
+    RED --> DISPLAY
+    DISPLAY --> INPUT
+
+    style START fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style STOP fill:#FFEBEE,stroke:#C62828,stroke-width:2px
+    style ERR fill:#FFEBEE,stroke:#C62828,stroke-width:2px
+    style LOAD fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+    style INPUT fill:#E3F2FD,stroke:#1565C0,stroke-width:2px
+    style CALC fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style METRICS fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px
+    style BTN fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+    style SCALE fill:#E0F7FA,stroke:#00838F,stroke-width:2px
+    style PREDICT fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style CHECK fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+    style GREEN fill:#C8E6C9,stroke:#1B5E20,stroke-width:2px
+    style YELLOW fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+    style RED fill:#FFCDD2,stroke:#B71C1C,stroke-width:2px
+    style DISPLAY fill:#E1F5FE,stroke:#0277BD,stroke-width:2px
 ```
 
 ---
