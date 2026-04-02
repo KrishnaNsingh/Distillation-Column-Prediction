@@ -34,6 +34,7 @@
 - [Key Features](#-key-features)
 - [System Architecture](#-system-architecture)
 - [ML Pipeline Flowchart](#-ml-pipeline-flowchart)
+- [Application User Flow](#-application-user-flow)
 - [Feature Engineering](#-feature-engineering)
 - [Model Performance](#-model-performance)
 - [Quick Start](#-quick-start)
