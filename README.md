@@ -16,11 +16,11 @@
 
 <br/>
 
-[![GitHub stars](https://img.shields.io/github/stars/Mausam5055/Distillation-Column-Prediction?style=social)](https://github.com/Mausam5055/Distillation-Column-Prediction/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Mausam5055/Distillation-Column-Prediction?style=social)](https://github.com/Mausam5055/Distillation-Column-Prediction/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/Mausam5055/Distillation-Column-Prediction?style=social)](https://github.com/Mausam5055/Distillation-Column-Prediction/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Mausam5055/Distillation-Column-Prediction?style=flat-square&color=blue)](https://github.com/Mausam5055/Distillation-Column-Prediction/commits/main)
-[![Repo Size](https://img.shields.io/github/repo-size/Mausam5055/Distillation-Column-Prediction?style=flat-square&color=purple)](https://github.com/Mausam5055/Distillation-Column-Prediction)
+[![GitHub stars](https://img.shields.io/github/stars/KrishanNsingh/Distillation-Column-Prediction?style=social)](https://github.com/KrishnaNsingh/Distillation-Column-Prediction/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/KrishnaNsingh/Distillation-Column-Prediction?style=social)](https://github.com/KrishnaNsingh/Distillation-Column-Prediction/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/KrishnaNsingh/Distillation-Column-Prediction?style=social)](https://github.com/KrishnaNsingh/Distillation-Column-Prediction/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/KrishnaNsingh/Distillation-Column-Prediction?style=flat-square&color=blue)](https://github.com/KrishnaNsingh/Distillation-Column-Prediction/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/KrishaNsingh/Distillation-Column-Prediction?style=flat-square&color=purple)](https://github.com/KrishnaNsingh/Distillation-Column-Prediction)
 
 <br/>
 
